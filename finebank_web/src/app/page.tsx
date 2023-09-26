@@ -1,5 +1,11 @@
+import SectionPanel from "@/components/SectionPanel";
+import SectionAccount from "@/components/SectionAccount";
+
 export default function Home() {
-  return (
-    <h1>Home</h1>
-  )
+	return (
+		<>
+			<SectionPanel />
+			<SectionAccount />
+		</>
+	);
 }
