@@ -1,47 +1,21 @@
-// import Container from "./Container";
-// import Image from "next/image";
-// import ImgLogin from "@/assets/login-img.png";
-
-// export default function Login() {
-// 	return (
-// 		<section className="flex w-full h-screen bg-primary-black pt-40">
-// 			<Container>
-// 				<div className="flex md:flex-nowrap">
-// 					<div>
-// 						<Image
-// 							src={ImgLogin}
-// 							alt="logo"
-// 							className="mr-[6%] hidden md:block w-full h-auto lg:w-[30rem] lg:h-[30rem]"
-// 						/>
-// 					</div>
-// 					<div>
-// 						<h1>Login</h1>
-// 					</div>
-// 				</div>
-// 			</Container>
-// 		</section>
-// 	);
-// }
-
 "use client";
-import { useToggle, upperFirst } from "@mantine/hooks";
+
 import { useForm } from "@mantine/form";
 import {
 	TextInput,
 	PasswordInput,
-	Text,
 	Paper,
 	Group,
 	PaperProps,
 	Button,
-	Divider,
-	Checkbox,
-	Anchor,
 	Stack,
+	useMantineColorScheme,
 } from "@mantine/core";
 
+import Container from "./Container";
+
 export default function Login(props: PaperProps) {
-	const [type, toggle] = useToggle(["login", "register"]);
+	const { setColorScheme, clearColorScheme } = useMantineColorScheme();
 	const form = useForm({
 		initialValues: {
 			email: "",
@@ -51,91 +25,71 @@ export default function Login(props: PaperProps) {
 		},
 
 		validate: {
-			email: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
+			email: (val) => (/^\S+@\S+$/.test(val) ? null : "Email inválido"),
 			password: (val) =>
-				val.length <= 6
-					? "Password should include at least 6 characters"
-					: null,
+				val.length <= 5 ? "Senha deve ter no mínimo 6 caracteres" : null,
 		},
 	});
 
+	setColorScheme("dark");
+
 	return (
-		<Paper radius="md" p="xl" withBorder {...props}>
-			<Text size="lg" fw={500}>
-				Welcome to Mantine, {type} with
-			</Text>
-
-			<Divider label="Or continue with email" labelPosition="center" my="lg" />
-
-			<form onSubmit={form.onSubmit(() => {})}>
-				<Stack>
-					{type === "register" && (
-						<TextInput
-							label="Name"
-							placeholder="Your name"
-							value={form.values.name}
-							onChange={(event) =>
-								form.setFieldValue("name", event.currentTarget.value)
-							}
-							radius="md"
-						/>
-					)}
-
-					<TextInput
-						required
-						label="Email"
-						placeholder="hello@mantine.dev"
-						value={form.values.email}
-						onChange={(event) =>
-							form.setFieldValue("email", event.currentTarget.value)
-						}
-						error={form.errors.email && "Invalid email"}
+		<section className="flex w-full h-screen bg-primary-black pt-40">
+			<Container>
+				<div className="flex justify-center w-full h-96 mt-20">
+					<Paper
+						className="w-[90%] max-w-[598px] max-h-fit"
 						radius="md"
-					/>
-
-					<PasswordInput
-						required
-						label="Password"
-						placeholder="Your password"
-						value={form.values.password}
-						onChange={(event) =>
-							form.setFieldValue("password", event.currentTarget.value)
-						}
-						error={
-							form.errors.password &&
-							"Password should include at least 6 characters"
-						}
-						radius="md"
-					/>
-
-					{type === "register" && (
-						<Checkbox
-							label="I accept terms and conditions"
-							checked={form.values.terms}
-							onChange={(event) =>
-								form.setFieldValue("terms", event.currentTarget.checked)
-							}
-						/>
-					)}
-				</Stack>
-
-				<Group justify="space-between" mt="xl">
-					<Anchor
-						component="button"
-						type="button"
-						c="dimmed"
-						onClick={() => toggle()}
-						size="xs"
+						p="xl"
+						withBorder
+						{...props}
 					>
-						{type === "register"
-							? "Already have an account? Login"
-							: "Don't have an account? Register"}
-					</Anchor>
-					<Button type="submit" radius="xl">
-						{upperFirst(type)}
-					</Button>
-				</Group>
-			</form>
-		</Paper>
+						<h1 className="my-5 text-3xl font-semibold text-primary-white mb-5 text-center">
+							Login
+						</h1>
+
+						<form onSubmit={form.onSubmit(() => {})}>
+							<Stack>
+								<TextInput
+									required
+									label="Email"
+									placeholder="user@finebank.com"
+									value={form.values.email}
+									onChange={(event) =>
+										form.setFieldValue("email", event.currentTarget.value)
+									}
+									error={form.errors.email && "Email inválido"}
+									radius="md"
+								/>
+
+								<PasswordInput
+									required
+									label="Senha"
+									placeholder="senha"
+									value={form.values.password}
+									onChange={(event) =>
+										form.setFieldValue("password", event.currentTarget.value)
+									}
+									error={
+										form.errors.password &&
+										"Senha deve ter no mínimo 6 caracteres"
+									}
+									radius="md"
+								/>
+							</Stack>
+
+							<Group justify="space-between" mt="xl">
+								<Button
+									type="submit"
+									className="bg-light-yellow text-primary-black rounded-3xl"
+								>
+									Login
+								</Button>
+							</Group>
+						</form>
+					</Paper>
+				</div>
+			</Container>
+		</section>
 	);
 }
