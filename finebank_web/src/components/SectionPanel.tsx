@@ -6,13 +6,13 @@ import Link from "next/link";
 
 export default function SectionPanel() {
 	return (
-		<section className="flex w-full h-screen bg-primary-black pt-40">
+		<section className="flex w-full bg-primary-black pt-40">
 			<Container>
 				<div className="flex-1 first-letter:max-w-2xl">
-					<h1 className="text-primary-white text-6xl md:text-7xl font-bold mb-12 pt-16 max-w-2xl">
+					<h1 className="text-primary-white text-4xl sm:text-5xl md:text-7xl font-bold mb-12 pt-16 max-w-2xl">
 						Sua Flexibilidade, Nossa Excelência
 					</h1>
-					<p className="text-light-gray text-lg max-w-2xl">
+					<p className="text-light-gray text-lg max-w-[90%]">
 						Controle tudo diretamente e facilmente com o Finebank. Escolha seu
 						limite de pagamento, envie dinheiro para amigos, pague seus
 						funcionários mensalmente. Tudo em um só lugar.

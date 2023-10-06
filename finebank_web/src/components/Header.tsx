@@ -19,7 +19,7 @@ export default function Header() {
 		});
 	};
 	return (
-		<header className="flex items-center w-full h-20 bg-primary-black absolute">
+		<header className="flex items-center w-full h-20 bg-primary-black absolute mt-2">
 			<Container>
 				<Link href="/" className="flex items-center gap-14">
 					<Image src={Logo} alt="logo" className="w-32 sm:w-40 md:w-52" />
@@ -43,7 +43,7 @@ export default function Header() {
 						href="/login"
 						className="border border-primary-yellow border-solid py-2 px-5 rounded-md text-primary-yellow hover:border-light-yellow hover:text-light-yellow transition duration-300"
 					>
-						Acessar Conta
+						Login
 					</Link>
 				</div>
 			</Container>
