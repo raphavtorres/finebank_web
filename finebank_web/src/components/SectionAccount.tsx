@@ -6,7 +6,10 @@ import CellDigitalAccount from "@/assets/cell_digitalaccount.png";
 
 export default function SectionAccount() {
 	return (
-		<section className="flex justify-center  min-w-full min-h-screen bg-white pt-40">
+		<section
+			id="account-sec"
+			className="flex justify-center  min-w-full min-h-screen bg-white pt-40"
+		>
 			<div className="justify-center">
 				<Container>
 					<div className="flex justify-center flex-wrap">

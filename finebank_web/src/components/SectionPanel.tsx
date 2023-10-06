@@ -2,6 +2,7 @@ import Image from "next/image";
 import Container from "./Container";
 
 import PhonePanel from "@/assets/cell_phone_panel.png";
+import Link from "next/link";
 
 export default function SectionPanel() {
 	return (
@@ -17,12 +18,20 @@ export default function SectionPanel() {
 						funcionários mensalmente. Tudo em um só lugar.
 					</p>
 					<div className="mt-20">
-						<button className="w-32 h-12 text-base md:w-40 md:h-14 md:text-lg font-extrabold text-primary-black bg-light-yellow rounded-lg mr-10 hover:bg-primary-yellow transition duration-300">
-							Download
-						</button>
-						<button className="w-32 h-12 text-base md:w-44 md:h-14 md:text-lg font-medium text-primary-yellow bg-primary-gray rounded-lg hover:bg-[#2B3137] hover:text-light-yellow transition duration-300">
-							Acessar Conta
-						</button>
+						<Link href="/login">
+							<button className="w-36 h-12 text-base md:w-44 md:h-14 md:text-lg font-extrabold text-primary-black bg-light-yellow rounded-lg mr-10 hover:bg-primary-yellow transition duration-300">
+								Acessar Conta
+							</button>
+						</Link>
+						<Link
+							href="https://github.com/raphavtorres/finebank_app"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<button className="w-32 h-12 text-base md:w-40 md:h-14 md:text-lg font-medium text-primary-yellow bg-primary-gray rounded-lg hover:bg-[#2B3137] hover:text-light-yellow transition duration-300">
+								Download
+							</button>
+						</Link>
 					</div>
 				</div>
 				<div>

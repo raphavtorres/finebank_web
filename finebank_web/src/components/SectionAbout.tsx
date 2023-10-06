@@ -5,7 +5,7 @@ import ImgAbout from "@/assets/about_img.png";
 
 export default function SectionAbout() {
 	return (
-		<section className="flex w-full h-screen bg-white pt-40">
+		<section id="about-sec" className="flex w-full h-screen bg-white pt-40">
 			<Container>
 				<div className="flex md:flex-nowrap">
 					<Image
