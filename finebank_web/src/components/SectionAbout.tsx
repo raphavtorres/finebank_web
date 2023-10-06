@@ -7,10 +7,14 @@ export default function SectionAbout() {
 	return (
 		<section className="flex w-full h-screen bg-white pt-40">
 			<Container>
-				<div className="flex">
-					<Image src={ImgAbout} alt="logo" className="w-[30rem] h-[30rem]" />
-					<div className="ml-32">
-						<h1 className="font-bold text-4xl mt-20 mb-16 w-[40rem]">
+				<div className="flex md:flex-nowrap">
+					<Image
+						src={ImgAbout}
+						alt="logo"
+						className="mr-[6%] hidden md:block w-[20rem] h-[20rem] lg:w-[30rem] lg:h-[30rem]"
+					/>
+					<div className="">
+						<h1 className="font-bold text-4xl mt-[5%] mb-16 max-w-full">
 							Tudo o que você mais deseja e precisa, em um único app.
 						</h1>
 						<ul className="list-disc ml-5 mb-16 text-xl">
