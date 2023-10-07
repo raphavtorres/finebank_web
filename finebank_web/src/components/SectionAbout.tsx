@@ -5,9 +5,9 @@ import ImgAbout from "@/assets/about_img.png";
 
 export default function SectionAbout() {
 	return (
-		<section id="about-sec" className="flex w-full h-screen bg-white">
+		<section id="about-sec" className="flex w-full min-h-screen bg-white pb-32">
 			<Container>
-				<div className="flex items-center md:flex-nowrap mb-60">
+				<div className="flex items-center md:flex-nowrap">
 					<Image
 						src={ImgAbout}
 						alt="logo"

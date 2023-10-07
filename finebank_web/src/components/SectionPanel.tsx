@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function SectionPanel() {
 	return (
-		<section className="flex w-full bg-primary-black pt-40">
+		<section className="flex w-full min-h-screen bg-primary-black pb-10">
 			<Container>
 				<div className="flex-1 first-letter:max-w-2xl">
 					<h1 className="text-primary-white text-4xl sm:text-5xl md:text-7xl font-bold mb-12 pt-16 max-w-2xl">

@@ -34,11 +34,11 @@ export default function Login(props: PaperProps) {
 	setColorScheme("dark");
 
 	return (
-		<section className="flex w-full h-screen bg-primary-black pt-40">
+		<section className="flex w-full h-full bg-primary-black">
 			<Container>
-				<div className="flex justify-center w-full h-96 mt-20">
+				<div className="flex justify-center h-[80%] w-full">
 					<Paper
-						className="w-[90%] max-w-[598px] max-h-fit"
+						className="w-[90%] max-w-[598px] h-fit"
 						radius="md"
 						p="xl"
 						withBorder
