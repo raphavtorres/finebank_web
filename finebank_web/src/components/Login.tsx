@@ -18,14 +18,17 @@ export default function Login(props: PaperProps) {
 	const { setColorScheme, clearColorScheme } = useMantineColorScheme();
 	const form = useForm({
 		initialValues: {
-			email: "",
-			name: "",
+			cpfOrCnpj: "",
 			password: "",
 			terms: true,
 		},
 
 		validate: {
-			email: (val) => (/^\S+@\S+$/.test(val) ? null : "Email inválido"),
+			cpfOrCnpj: (val) => {
+				const isCpfValid = val.length === 11;
+				const isCnpjValid = val.length === 14;
+				return isCpfValid || isCnpjValid ? null : "CPF/CNPJ inválido";
+			},
 			password: (val) =>
 				val.length <= 5 ? "Senha deve ter no mínimo 6 caracteres" : null,
 		},
@@ -51,14 +54,15 @@ export default function Login(props: PaperProps) {
 						<form onSubmit={form.onSubmit(() => {})}>
 							<Stack>
 								<TextInput
+									type="number"
 									required
-									label="Email"
-									placeholder="user@finebank.com"
-									value={form.values.email}
+									label="CPF / CNPJ"
+									placeholder="xxx.xxx.xxx-xx"
+									value={form.values.cpfOrCnpj}
 									onChange={(event) =>
-										form.setFieldValue("email", event.currentTarget.value)
+										form.setFieldValue("cpfOrCnpj", event.currentTarget.value)
 									}
-									error={form.errors.email && "Email inválido"}
+									error={form.errors.cpfOrCnpj && "CPF/CNPJ inválido"}
 									radius="md"
 								/>
 
@@ -75,6 +79,7 @@ export default function Login(props: PaperProps) {
 										"Senha deve ter no mínimo 6 caracteres"
 									}
 									radius="md"
+									max={20}
 								/>
 							</Stack>
 
