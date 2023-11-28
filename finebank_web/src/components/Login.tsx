@@ -13,9 +13,11 @@ import {
 } from "@mantine/core";
 
 import Container from "./Container";
+import { useAuth } from "@/auth/AuthContext";
+import { loginAPI } from "@/services/api";
 
 export default function Login(props: PaperProps) {
-	const { setColorScheme, clearColorScheme } = useMantineColorScheme();
+	// const { setColorScheme, clearColorScheme } = useMantineColorScheme();
 	const form = useForm({
 		initialValues: {
 			cpfOrCnpj: "",
@@ -34,7 +36,16 @@ export default function Login(props: PaperProps) {
 		},
 	});
 
-	setColorScheme("dark");
+	const { login } = useAuth();
+
+	// setColorScheme("dark");
+
+	async function handleLogin(cpfOrCnpj: string, password: string) {
+		// Implement your login logic, and call the login function from the context
+		const jwt = await loginAPI(cpfOrCnpj, password);
+		console.log(jwt);
+		// login({ jwt });
+	}
 
 	return (
 		<section className="flex w-full h-full bg-primary-black">
@@ -51,7 +62,11 @@ export default function Login(props: PaperProps) {
 							Login
 						</h1>
 
-						<form onSubmit={form.onSubmit(() => {})}>
+						<form
+							onSubmit={form.onSubmit(() =>
+								handleLogin(form.values.cpfOrCnpj, form.values.password)
+							)}
+						>
 							<Stack>
 								<TextInput
 									type="number"

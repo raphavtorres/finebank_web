@@ -4,6 +4,8 @@ import "@mantine/core/styles.css";
 
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 
+import { AuthProvider } from "@/auth/AuthContext";
+
 import Header from "@/components/Header";
 import "./globals.css";
 import Footer from "@/components/Footer";
@@ -27,7 +29,11 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<Header />
-				<MantineProvider defaultColorScheme="dark">{children}</MantineProvider>
+				<AuthProvider>
+					<MantineProvider defaultColorScheme="dark">
+						{children}
+					</MantineProvider>
+				</AuthProvider>
 				<Footer />
 			</body>
 		</html>
