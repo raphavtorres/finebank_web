@@ -16,7 +16,13 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
 
 	useEffect(() => {
 		async function handleJWTVerification(jwt: any) {
-			!(await verifyJWT(jwt)) ? logout() : router.push("/content");
+			const access_token = jwt.jwt.access;
+			if (!(await verifyJWT(access_token))) {
+				logout();
+				return false;
+			}
+
+			return true;
 		}
 
 		// Redirect to the login page if the user is not authenticated

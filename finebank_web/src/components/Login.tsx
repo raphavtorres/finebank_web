@@ -12,6 +12,8 @@ import {
 	useMantineColorScheme,
 } from "@mantine/core";
 
+import { useRouter } from "next/navigation";
+
 import Container from "./Container";
 import { useAuth } from "@/auth/AuthContext";
 import { loginAPI } from "@/services/api";
@@ -37,14 +39,15 @@ export default function Login(props: PaperProps) {
 	});
 
 	const { login } = useAuth();
+	const router = useRouter();
 
 	// setColorScheme("dark");
 
 	async function handleLogin(cpfOrCnpj: string, password: string) {
 		// Implement your login logic, and call the login function from the context
 		const jwt = await loginAPI(cpfOrCnpj, password);
-		console.log(jwt);
-		// login({ jwt });
+		login({ jwt });
+		router.push("/content");
 	}
 
 	return (
