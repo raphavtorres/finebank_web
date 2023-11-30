@@ -47,7 +47,7 @@ export default function Login(props: PaperProps) {
 		// Implement your login logic, and call the login function from the context
 		const jwt = await loginAPI(cpfOrCnpj, password);
 		login({ jwt });
-		router.push("/content");
+		// router.push("/content");
 	}
 
 	return (

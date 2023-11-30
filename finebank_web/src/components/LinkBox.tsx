@@ -3,11 +3,10 @@ export default function LinkBox(props: any) {
 
 	return (
 		<>
-			<button className="flex-row w-[96%]" onClick={props.action}>
-				{props.image}
+			<button className="flex justify-around w-[96%]" onClick={props.action}>
 				{fields &&
 					fields.map((item: any, i: any) => (
-						<div key={i} className="flex-1 flex-grow pl-3 items-center">
+						<div key={i} className="flex pl-3 items-center">
 							<p className="text-primary-gray text-lg font-normal mr-5">
 								{item.title}
 							</p>

@@ -96,3 +96,12 @@ export async function verifyJWT(token: string): Promise<boolean> {
     return false;
   }
 }
+
+export async function getAccounts() {
+	try {
+		const response = await axiosInstance.get("accounts/");
+		return response.data;
+	} catch (err) {
+		console.log(err, " | erro ao pegar as contas");
+	}
+}
