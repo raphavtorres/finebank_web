@@ -21,7 +21,7 @@ const LinkBox: React.FC<LinkBoxProps> = ({ fields, action }) => (
 					</div>
 				))}
 		</button>
-		<div className="h-[1px] w-full bg-primary-gray" />
+		<div className="h-[1px] w-full bg-primary-gray mt-2" />
 	</>
 );
 

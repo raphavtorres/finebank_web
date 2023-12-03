@@ -10,7 +10,6 @@ export default function UserPicture() {
 	useEffect(() => {
 		async function fetchData() {
 			const profilePic = await getProfilePic();
-			console.log(profilePic);
 			profilePic[0].picture && setPicture(profilePic[0].picture);
 		}
 		fetchData();
@@ -21,9 +20,9 @@ export default function UserPicture() {
 			<Image
 				src={picture}
 				alt="logo"
-				width={512}
-				height={512}
-				className="h-8 md:h-10 w-auto rounded-full"
+				width={60}
+				height={60}
+				className="rounded-full"
 			/>
 		</div>
 	);

@@ -8,9 +8,8 @@ import { Paper } from "@mantine/core";
 
 import Container from "./Container";
 import LinkBox from "./LinkBox";
-import { useAuth } from "@/auth/AuthContext";
 import { getAccounts } from "@/services/api";
-import { ACCOUNT_OBJ, storeSET } from "@/services/constants";
+import { ACCOUNT_OBJ, storeGET, storeSET } from "@/services/constants";
 
 interface Account {
 	agency: string;
@@ -31,7 +30,6 @@ export default function AccountChoice() {
 	}, []);
 
 	async function handleAccountChoice(item: Account) {
-		console.log(item);
 		const accountDataAsString = JSON.stringify(item);
 		storeSET(ACCOUNT_OBJ, accountDataAsString);
 		router.push("/content");

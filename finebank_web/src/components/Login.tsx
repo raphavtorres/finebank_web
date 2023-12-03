@@ -16,7 +16,8 @@ import { useRouter } from "next/navigation";
 
 import Container from "./Container";
 import { useAuth } from "@/auth/AuthContext";
-import { loginAPI } from "@/services/api";
+import { loginAPI, getUser } from "@/services/api";
+import { USER_OBJ, USER_TYPE, storeSET } from "@/services/constants";
 
 export default function Login(props: PaperProps) {
 	// const { setColorScheme, clearColorScheme } = useMantineColorScheme();
@@ -44,14 +45,21 @@ export default function Login(props: PaperProps) {
 	// setColorScheme("dark");
 
 	async function handleLogin(cpfOrCnpj: string, password: string) {
+		// testing usertype and saving obj with user information
+		const usertype = cpfOrCnpj.length == 11 ? "natural" : "legal";
+		const user_obj = await getUser(usertype);
+		storeSET(USER_TYPE, usertype);
+
+		const user_objstring = JSON.stringify(user_obj);
+		storeSET(USER_OBJ, user_objstring);
+
 		// Implement your login logic, and call the login function from the context
 		const jwt = await loginAPI(cpfOrCnpj, password);
 		login({ jwt });
-		// router.push("/content");
 	}
 
 	return (
-		<section className="flex w-full h-full bg-primary-black">
+		<section className="flex items-center w-full h-full bg-primary-black">
 			<Container>
 				<div className="flex justify-center h-[80%] w-full">
 					<Paper

@@ -3,10 +3,15 @@ import { useAuth, AuthContextType } from "@/auth/AuthContext";
 
 import Login from "@/components/Login";
 import AccountChoice from "@/components/AccountChoice";
+import Header from "@/components/Header";
 
 export default function Page() {
 	const { jwt } = useAuth() as AuthContextType;
 
-	// return <AccountChoice />;
-	return jwt ? <AccountChoice /> : <Login />;
+	return (
+		<>
+			<Header />
+			{jwt ? <AccountChoice /> : <Login />}
+		</>
+	);
 }

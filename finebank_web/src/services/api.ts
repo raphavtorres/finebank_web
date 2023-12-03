@@ -114,3 +114,24 @@ export async function getProfilePic() {
 		console.log("Erro ao enviar a imagem para a API:", err);
 	}
 }
+
+// Geting user
+export async function getUser(user_type: string) {
+	try {
+		const response = await axiosInstance.get(`${user_type}-people/`);
+		return response.data[0];
+	} catch (err) {
+		console.log("Erro ao ao pegar o usuário: ", err);
+	}
+}
+
+export async function getStatements(account: any) {
+	try {
+		const response = await axiosInstance.get(
+			`bank-statement/?account=${account}`
+		);
+		return response.data;
+	} catch (err) {
+    console.log("Erro ao pegar as transações: ", err);
+	}
+}
