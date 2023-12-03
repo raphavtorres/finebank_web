@@ -1,9 +1,12 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
+import { axiosInstance } from "@/services/api";
 
 interface JWT {
-	jwt: string;
+	jwt: {
+		access: string;
+	};
 }
 
 export interface AuthContextType {
@@ -24,11 +27,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const login = (userData: JWT) => {
 		// Implement your login logic here
 		setJWT(userData);
+
+		axiosInstance.defaults.headers.common[
+			"Authorization"
+		] = `Bearer ${userData.jwt?.access}`;
 	};
 
 	const logout = () => {
 		// Implement your logout logic here
 		setJWT(null);
+		axiosInstance.defaults.headers.common["Authorization"] = "";
 	};
 
 	return (

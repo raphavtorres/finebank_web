@@ -7,6 +7,6 @@ import AccountChoice from "@/components/AccountChoice";
 export default function Page() {
 	const { jwt } = useAuth() as AuthContextType;
 
-	return <AccountChoice />;
-	// return jwt ? <AccountChoice /> : <Login />;
+	// return <AccountChoice />;
+	return jwt ? <AccountChoice /> : <Login />;
 }

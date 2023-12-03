@@ -7,7 +7,7 @@ interface ErrorResponse {
 }
 
 export const axiosInstance = axios.create({
-  baseURL: "http://192.168.56.1:8000/api/v1/",
+  baseURL: "http://127.0.0.1:8000/api/v1/",
 });
 
 // SUCCESS WARNING
@@ -103,5 +103,14 @@ export async function getAccounts() {
 		return response.data;
 	} catch (err) {
 		console.log(err, " | erro ao pegar as contas");
+	}
+}
+
+export async function getProfilePic() {
+	try {
+		const response = await axiosInstance.get(`profile-picture/`);
+		return response.data;
+	} catch (err) {
+		console.log("Erro ao enviar a imagem para a API:", err);
 	}
 }
