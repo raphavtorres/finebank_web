@@ -50,7 +50,7 @@ export default function Page() {
 
 	return (
 		<PrivateRoute>
-			<section className="w-full h-full bg-primary-black">
+			<section className="w-full min-h-full bg-primary-black">
 				<div className="flex items-center mx-auto pt-14 w-[90%] justify-between">
 					<div className="flex items-center">
 						<UserPicture />

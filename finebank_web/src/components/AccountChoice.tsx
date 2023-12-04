@@ -10,6 +10,7 @@ import Container from "./Container";
 import LinkBox from "./LinkBox";
 import { getAccounts } from "@/services/api";
 import { ACCOUNT_OBJ, storeGET, storeSET } from "@/services/constants";
+import Footer from "./Footer";
 
 interface Account {
 	agency: string;
@@ -36,38 +37,40 @@ export default function AccountChoice() {
 	}
 
 	return (
-		<section className="flex w-full h-full bg-primary-black">
-			<Container>
-				<div className="flex justify-center items-center h-[80%] w-full">
-					<Paper
-						className="w-[90%] max-w-[598px] h-fit"
-						radius="md"
-						p="xl"
-						withBorder
-					>
-						<h1 className="my-5 mb-10 text-3xl font-semibold text-primary-white text-center">
-							Escolha sua conta
-						</h1>
+		<>
+			<section className="flex items-center w-full h-full bg-primary-black">
+				<Container>
+					<div className="flex items-center justify-center h-[80%] w-full">
+						<Paper
+							className="w-[90%] max-w-[598px] h-fit"
+							radius="md"
+							p="xl"
+							withBorder
+						>
+							<h1 className="my-5 mb-10 text-3xl font-semibold text-primary-white text-center">
+								Escolha sua conta
+							</h1>
 
-						{accountsList.map((item) => (
-							<LinkBox
-								key={item.number}
-								fields={[
-									{
-										title: "Agência",
-										value: item.agency,
-									},
-									{
-										title: "Conta",
-										value: item.number,
-									},
-								]}
-								action={() => handleAccountChoice(item)}
-							/>
-						))}
-					</Paper>
-				</div>
-			</Container>
-		</section>
+							{accountsList.map((item) => (
+								<LinkBox
+									key={item.number}
+									fields={[
+										{
+											title: "Agência",
+											value: item.agency,
+										},
+										{
+											title: "Conta",
+											value: item.number,
+										},
+									]}
+									action={() => handleAccountChoice(item)}
+								/>
+							))}
+						</Paper>
+					</div>
+				</Container>
+			</section>
+		</>
 	);
 }

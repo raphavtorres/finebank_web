@@ -61,7 +61,7 @@ export default function Login(props: PaperProps) {
 	return (
 		<section className="flex items-center w-full h-full bg-primary-black">
 			<Container>
-				<div className="flex justify-center h-[80%] w-full">
+				<div className="flex items-center justify-center h-[80%] w-full">
 					<Paper
 						className="w-[90%] max-w-[598px] h-fit"
 						radius="md"

@@ -6,7 +6,7 @@ import WhiteLogo from "@/assets/logo_white.png";
 export default function Footer() {
 	return (
 		<footer className="flex items-center h-32 bg-primary-black">
-			<div className="w-full max-w-[1440px] px-[15px] mx-auto flex justify-between">
+			<div className="h-fit w-full max-w-[1440px] px-[15px] mx-auto flex justify-between">
 				<Link href="/" className="flex justify-between items-center">
 					<Image src={WhiteLogo} alt="logo" className="h-5 md:h-6 w-auto" />
 					<p className="text-xs text-light-gray w-[60%]">
